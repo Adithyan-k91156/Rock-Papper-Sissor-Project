@@ -8,61 +8,63 @@
 <body>
     <h1>ROCK-PAPER-SCISSOR</h1>
     <div>
-    <button onclick="
-        compMove();
-        if(compChoice === 0){
-            console.log('computer pick rock. Its a tie')
-            alert('computer pick rock. Its a tie')
-        }
-        if(compChoice === 1){
-            console.log('computer pick paper. you lose')}
-            alert('computer pick paper. you lose')
-        if(compChoice === 2){
-            console.log('computer pick scissor. you win')
-            alert('computer pick scissor. you win')
-        }
-    ">Rock</button>
-    <button onclick="
-        compMove();
-
-        if(compChoice === 0){
-            console.log('computer pick rock. you win')
-            alert('computer pick rock. you win')
-        }
-        if(compChoice === 1){
-            console.log('computer pick paper. its a tie')
-            alert('computer pick paper. its a tie')
-        }
-        if(compChoice === 2){
-            console.log('computer pick scissor. you lose')
-            alert('computer pick scissor. you lose')
-        }
-    ">Paper</button>
-    <button onclick="
-        compMove();
-
-        if(compChoice === 0){
-            console.log('computer pick rock. you lose')
-            alert('computer pick rock. you lose')
-        }
-        if(compChoice === 1){
-            console.log('computer pick paper. its a win')
-            alert('computer pick paper. its a win')
-        }
-        if(compChoice === 2){
-            console.log('computer pick scissor. you tie')
-            alert('computer pick scissor. you tie')
-        }
-    ">Scissor</button>
+    <button onclick="playRock()">Rock</button>
+    <button onclick="playPaper()">Paper</button>
+    <button onclick="playScissor()">Scissor</button>
     </div>
     <script>
-        let compChoice = '';
-        function compMove(){
-            compChoice = Math.floor(Math.random() * 3);
-            console.log(compChoice);
+        // Constants for moves
+        const ROCK = 0;
+        const PAPER = 1;
+        const SCISSOR = 2;
+
+        // Get computer's move
+        function getComputerMove() {
+            return Math.floor(Math.random() * 3);
         }
-        
-        
+
+        // Determine winner and return message
+        function getGameResult(playerMove, computerMove) {
+            const moves = ['rock', 'paper', 'scissor'];
+            const computerMoveText = moves[computerMove];
+            
+            if (playerMove === computerMove) {
+                return `Computer picked ${computerMoveText}. It's a tie!`;
+            }
+            
+            // Win conditions
+            if (
+                (playerMove === ROCK && computerMove === SCISSOR) ||
+                (playerMove === PAPER && computerMove === ROCK) ||
+                (playerMove === SCISSOR && computerMove === PAPER)
+            ) {
+                return `Computer picked ${computerMoveText}. You win!`;
+            }
+            
+            return `Computer picked ${computerMoveText}. You lose!`;
+        }
+
+        // Player move functions
+        function playRock() {
+            const computerMove = getComputerMove();
+            const result = getGameResult(ROCK, computerMove);
+            console.log(result);
+            alert(result);
+        }
+
+        function playPaper() {
+            const computerMove = getComputerMove();
+            const result = getGameResult(PAPER, computerMove);
+            console.log(result);
+            alert(result);
+        }
+
+        function playScissor() {
+            const computerMove = getComputerMove();
+            const result = getGameResult(SCISSOR, computerMove);
+            console.log(result);
+            alert(result);
+        }
     </script>
 </body>
 </html>
