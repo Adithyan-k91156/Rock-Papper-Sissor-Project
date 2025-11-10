@@ -9,6 +9,7 @@
     <h1>ROCK-PAPER-SCISSOR</h1>
     <div>
     <button onclick="
+        compMove();
         if(compChoice === 0){
             console.log('computer pick rock. Its a tie')
             alert('computer pick rock. Its a tie')
@@ -20,9 +21,10 @@
             console.log('computer pick scissor. you win')
             alert('computer pick scissor. you win')
         }
-        compChoice = Math.floor(Math.random() * 3);
     ">Rock</button>
     <button onclick="
+        compMove();
+
         if(compChoice === 0){
             console.log('computer pick rock. you win')
             alert('computer pick rock. you win')
@@ -35,9 +37,10 @@
             console.log('computer pick scissor. you lose')
             alert('computer pick scissor. you lose')
         }
-        compChoice = Math.floor(Math.random() * 3);
     ">Paper</button>
     <button onclick="
+        compMove();
+
         if(compChoice === 0){
             console.log('computer pick rock. you lose')
             alert('computer pick rock. you lose')
@@ -50,12 +53,14 @@
             console.log('computer pick scissor. you tie')
             alert('computer pick scissor. you tie')
         }
-        compChoice = Math.floor(Math.random() * 3);
     ">Scissor</button>
     </div>
     <script>
-        let compChoice = Math.floor(Math.random() * 3);
-        console.log(compChoice);
+        let compChoice = '';
+        function compMove(){
+            compChoice = Math.floor(Math.random() * 3);
+            console.log(compChoice);
+        }
         
         
     </script>
